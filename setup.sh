@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 # Termux / Linux. Jalankan: bash setup.sh
 set -e
-
 if command -v pkg >/dev/null 2>&1; then
   # Termux
   pkg update -y && pkg upgrade -y
@@ -27,16 +26,14 @@ else
   elif command -v pip >/dev/null 2>&1; then
     PIP_CMD="pip"
   else
-    echo "ERROR: pip tidak ditemukan. Install python3-pip dulu." >&2
+    echo "ERROR: pip tidak ditemukan. Install python3-pip
+dulu." >&2
     exit 1
   fi
 fi
-
 echo ">> Menggunakan: $PIP_CMD"
 $PIP_CMD install --upgrade pip
 $PIP_CMD install -r requirements.txt
-
 [ -f .env ] || cp .env.example .env
-
 echo
 echo "Selesai. Edit .env (BOT_TOKEN + 10 variabel dari me-cli), lalu jalankan: bash run.sh"
